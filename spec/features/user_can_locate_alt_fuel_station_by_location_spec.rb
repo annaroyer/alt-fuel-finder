@@ -10,7 +10,7 @@ describe 'As a user' do
         click_on 'Locate'
 
         expect(current_path).to eq('/search')
-        expect(page).to have_content('10 Closest Stations within 6 Miles of 80203')
+        expect(page).to have_content('10 Closest Stations within 6 Miles')
         expect(page).to have_content("Name: UDR")
         expect(page).to have_content("Address: 800 Acoma St")
         expect(page).to have_content("Fuel Types: Electric")
