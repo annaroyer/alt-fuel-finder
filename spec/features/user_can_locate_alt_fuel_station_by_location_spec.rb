@@ -6,8 +6,13 @@ describe 'As a user' do
       scenario 'Then I should be on page "/search" with parameters visible in the url' do
         visit '/'
 
+        stations = File.open('./spec/fixtures/fuel_stations.json')
+        stub_request(:get, "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['NREL-API-KEY']}&location=80203&fuel_type=ELEC,LPG&limit=10")
+        .to_return(status: 200, body: stations, headers: {})
+        
         fill_in :q, with: '80203'
         click_on 'Locate'
+
 
         expect(current_path).to eq('/search')
         expect(page).to have_content('10 Closest Stations within 6 Miles')
@@ -20,7 +25,3 @@ describe 'As a user' do
     end
   end
 end
-
-#'Then I should see a list of the 10 closest stations within 6 miles sorted by distance'
-# And the stations should be limited to Electric and Propane
-# And for each of the stations I should see Name, Address, Fuel Types, Distance, and Access Times
