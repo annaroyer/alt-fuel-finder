@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    @stations = NrelStationService.get_alt_fuel_stations(params[:q])
+    @stations = NrelStationService.new(params[:q]).alt_fuel_stations
   end
 end
