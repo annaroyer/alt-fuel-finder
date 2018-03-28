@@ -6,7 +6,8 @@ describe 'As a user' do
       scenario 'Then I should be on page "/search" with parameters visible in the url' do
         visit '/'
 
-        fill_in 'Search', with: '80203'
+        fill_in :q, with: '80203'
+        click_on 'Locate'
 
         expect(current_path).to eq('/search?q=80203')
       end
