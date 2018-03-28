@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def index
-    @zipcode = params[:q]
-    @stations = NrelStationService.get_alt_fuel_stations(@zipcode)
+    @stations = NrelStationService.get_alt_fuel_stations(params[:q])
   end
 end
