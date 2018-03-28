@@ -1,1 +1,8 @@
 <h1>10 Closest Stations within 6 Miles of <%= @zipcode %></h1>
+<% @stations.each do |station| %>
+  <h4>Name: <%= station.name %></h4>
+  <p>Address: <%= station.full_address %></p>
+  <p>Fuel Types: <%= station.full_fuel_types %></p>
+  <p>Distance: <%= station.distance %> miles</p>
+  <p>Access Times: <%= station.access_times %></p>
+<% end %>
